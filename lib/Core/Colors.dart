@@ -1,5 +1,5 @@
 
-import 'dart:ui';
+import 'package:flutter/material.dart';
 
 class MyColors{
   static Color mainColor = Color(0XFF1F4698);
@@ -10,4 +10,6 @@ class MyColors{
   static Color greenColor = Color(0XFF79C6C0);
 
   static Color white = Color(0XFFFFFFFF);
+  static Color grey = Colors.grey[300]!;
+
 }
