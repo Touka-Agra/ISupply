@@ -10,20 +10,22 @@ class CreditTitle extends StatelessWidget {
   const CreditTitle({
     super.key,
     required this.user,
+    required this.text
   });
 
   final User user;
+  final String text;
 
   @override
   Widget build(BuildContext context) {
     return CustomContainer(
-      bgColor: MyColors.greenColor,
+      bgColor: MyColors.highlightColor,
       child: Row(
         children: [
           CircleAvatar(child: Icon(Icons.ac_unit)),
           SizedBox(width: 10,),
           CustomText(
-            text:"Credit Limit: ${user.creditCard!.limit} | ${user.creditCard!.days} days",
+            text:text,
             fontWeight: FontWeight.w600,
             fontSize: 14,
           ),

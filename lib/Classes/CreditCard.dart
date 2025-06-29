@@ -8,13 +8,10 @@ class CreditCard {
 
   late DateTime lastUpdate;
 
-  late bool isCreditMode;
-
-  CreditCard({required this.limit, required this.spent, required this.days}) {
+  CreditCard({required this.limit, required this.days}) {
     spent = 0.0;
     remaining = limit;
     remainingDays = days;
     lastUpdate = DateTime.now();
-    isCreditMode = true;
   }
 }

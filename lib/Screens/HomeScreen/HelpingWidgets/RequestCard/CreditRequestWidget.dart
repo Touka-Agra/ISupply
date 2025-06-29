@@ -6,7 +6,9 @@ import 'Widgets/RequestLimit.dart';
 import 'Widgets/RequestPlanDuration.dart';
 
 class CreditRequestWidget extends StatefulWidget {
-  const CreditRequestWidget({super.key});
+  final VoidCallback? onSubmitted;
+
+  const CreditRequestWidget({super.key, this.onSubmitted});
 
   @override
   State<CreditRequestWidget> createState() => _CreditRequestWidgetState();
@@ -20,14 +22,6 @@ class _CreditRequestWidgetState extends State<CreditRequestWidget> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Center(
-            child: CustomText(
-              text: "Apply for ISUPPLY Credit",
-              fontSize: 15,
-              fontWeight: FontWeight.w600,
-              color: MyColors.secondaryColor,
-            ),
-          ),
           const SizedBox(height: 10),
 
           RequestLimit(),
@@ -36,7 +30,8 @@ class _CreditRequestWidgetState extends State<CreditRequestWidget> {
           RequestPlanDuration(),
           const SizedBox(height: 10),
 
-          Center(child: RequestButton()),
+          Center(child: RequestButton(onPressed: widget.onSubmitted),
+          ),
         ],
       ),
     );

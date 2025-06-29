@@ -51,7 +51,7 @@ class SearchWidget extends StatelessWidget {
         Container(
           height: 48,
           decoration: BoxDecoration(
-            color: MyColors.greenColor,
+            color: MyColors.highlightColor,
             borderRadius: BorderRadius.circular(15),
           ),
           child: Padding(
