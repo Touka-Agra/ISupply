@@ -1,12 +1,9 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:isupply_hackathon_uiux/Core/Colors.dart';
-import 'package:isupply_hackathon_uiux/Screens/HomeScreen/HelpingWidgets/RequestCard/CreditRequestWidget.dart';
 import '../../../../Classes/CreditStatus.dart';
 import '../../../../Classes/User.dart';
+import '../../../../Core/Paths.dart';
 import '../../../../CustomWidgets/CustomContainer.dart';
-import '../../../../CustomWidgets/CustomText.dart';
+import '../RequestCard/CreditRequestWidget.dart';
 import '../ReviewingCard/ReciewingCardWidget.dart';
 import 'Widgets/CashBody.dart';
 import 'Widgets/CreditBody.dart';
@@ -14,7 +11,11 @@ import 'Widgets/CreditTitle.dart';
 import 'Widgets/CreditToggle.dart';
 
 class CreditCardWidget extends StatefulWidget {
-  const CreditCardWidget({super.key, required this.h, required this.user});
+  const CreditCardWidget({
+    super.key,
+    required this.h,
+    required this.user,
+  });
 
   final double h;
   final User user;
@@ -35,27 +36,44 @@ class _CreditCardWidgetState extends State<CreditCardWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return CustomContainer(
-      child: Column(
-        children: [
-          ConstrainedBox(
-            constraints: BoxConstraints(
-              minHeight: widget.h * 0.25,
-              maxHeight: widget.h * 0.28,
+    return Stack(
+      children: [
+        Positioned.fill(
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(16),
+            child: Image.asset(
+              MyPaths.patternWhite,
+              fit: BoxFit.cover,
+              color: Colors.white.withOpacity(0.08),
+              colorBlendMode: BlendMode.srcOver,
             ),
-            child: PageView(
-              controller: _pageController,
-              onPageChanged: _onPageChanged,
+          ),
+        ),
+
+        Padding(
+          padding: const EdgeInsets.all(5),
+          child: CustomContainer(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
               children: [
-                _buildCreditSection(),
-                CashBody(),
+                SizedBox(
+                  height: widget.h * 0.28,
+                  child: PageView(
+                    controller: _pageController,
+                    onPageChanged: _onPageChanged,
+                    children: [
+                      _buildCreditSection(),
+                      CashBody(),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 8),
+                CreditToggle(currentPage: _currentPage),
               ],
             ),
           ),
-          CreditToggle(currentPage: _currentPage),
-          const SizedBox(height: 10),
-        ],
-      ),
+        ),
+      ],
     );
   }
 
@@ -63,35 +81,38 @@ class _CreditCardWidgetState extends State<CreditCardWidget> {
     switch (widget.user.creditStatus) {
       case CreditStatus.hasCard:
         return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             CreditTitle(
               user: widget.user,
-              text: "Credit Limit: ${widget.user.creditCard!.limit} | ${widget.user.creditCard!.days} days",
+              text:
+              "Credit Limit: ${widget.user.creditCard!.limit} | ${widget.user.creditCard!.days} days",
             ),
+            const SizedBox(height: 8),
             CreditBody(user: widget.user),
           ],
         );
 
       case CreditStatus.pending:
-        return ReviewingCreditWidget();
+        return const ReviewingCreditWidget();
 
       case CreditStatus.notRequested:
-        return Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            CreditTitle(user: widget.user, text:  "Apply for ISUPPLY Credit"),
-            CreditRequestWidget(
-              onSubmitted: () {
-                setState(() {
-                  widget.user.creditStatus = CreditStatus.pending;
-                  //sleep(Duration(seconds: 5)); // assume acceptance
-                 // widget.user.creditStatus = CreditStatus.pending;
-                });
-              },
-            ),
-          ],
+        return SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              CreditTitle(user: widget.user, text: "Apply for ISUPPLY Credit"),
+              const SizedBox(height: 8),
+              CreditRequestWidget(
+                onSubmitted: () {
+                  setState(() {
+                    widget.user.creditStatus = CreditStatus.pending;
+                  });
+                },
+              ),
+            ],
+          ),
         );
     }
   }
-
 }
