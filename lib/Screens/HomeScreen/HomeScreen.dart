@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:isupply_hackathon_uiux/DummyData.dart';
 import '../../Classes/User.dart';
+import '../../Core/Colors.dart';
 import 'HelpingWidgets/AppBar/AppBar.dart';
 import 'HelpingWidgets/CreditCard/CreditCardWidget.dart';
+import 'HelpingWidgets/InvoiceBanner/InvoiceWidget.dart';
 
 class Homescreen extends StatelessWidget {
   Homescreen({super.key});
@@ -13,12 +15,19 @@ class Homescreen extends StatelessWidget {
     double h = MediaQuery.of(context).size.height;
     User user = DummyData.user;
     return Scaffold(
+      backgroundColor: MyColors.white,
       body: Stack(
         children: [
           Column(
             children: [
               MyAppBar(),
-              Expanded(child: Container(color: Colors.white)),
+              Column(
+                children: [
+                  Container(height:165,color: Colors.white),
+                  InvoiceWidget()
+                ],
+              ),
+
             ],
           ),
           Positioned(
