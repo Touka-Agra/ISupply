@@ -8,7 +8,7 @@ import 'HelpingWidgets/InvoiceBanner/InvoiceWidget.dart';
 import 'HelpingWidgets/KeyFeatures/KeyFeaturesWidget.dart';
 
 class HomeScreen extends StatelessWidget {
-  HomeScreen({super.key});
+  const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class HomeScreen extends StatelessWidget {
           children: [
             Column(
               children: [
-                MyAppBar(),
+                MyAppBar(height: h * 0.35,),
                 Column(
                   children: [
                     Container(height:165,color: Colors.white),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../../Core/Colors.dart';
 import '../../../../CustomWidgets/CustomText.dart';
+import '../../../ProductsScreen/ProductsScreen.dart';
 
 class InvoiceWidget extends StatelessWidget {
   InvoiceWidget({super.key});
@@ -9,7 +10,7 @@ class InvoiceWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        // Navigate to Best Invoice screen
+        Navigator.push(context, MaterialPageRoute(builder: (context)=>ProductsScreen()));
       },
       child: Container(
         height: 64,

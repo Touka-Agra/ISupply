@@ -28,7 +28,7 @@ class KeyFeaturesWidget extends StatelessWidget {
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 3,
           crossAxisSpacing: 15,
-          mainAxisSpacing: 18,
+          mainAxisSpacing: 25,
         ),
         itemBuilder: (context, index) {
           final feature = features[index];

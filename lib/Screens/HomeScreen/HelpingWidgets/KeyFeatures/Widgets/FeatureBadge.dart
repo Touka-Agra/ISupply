@@ -14,8 +14,8 @@ class FeatureBadge extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Positioned(
-      top: -10,
-      left: -10,
+      top: -15,
+      left: 30,
       child: Container(
         height: 45,
         width: 45,

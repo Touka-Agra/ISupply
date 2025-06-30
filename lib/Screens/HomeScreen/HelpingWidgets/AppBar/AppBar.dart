@@ -7,8 +7,13 @@ import 'Widgets/HeaderWidget.dart';
 import 'Widgets/SearchWidget.dart';
 
 class MyAppBar extends StatelessWidget {
+   double height;
+   bool showBack;
+
    MyAppBar({
     super.key,
+     required this.height,
+     this.showBack = false
   });
 
   TextEditingController searchController = TextEditingController();
@@ -16,14 +21,14 @@ class MyAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height * 0.35,
+      height: height,
       decoration: BoxDecoration(color: MyColors.mainColor),
       child: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(12.0),
+          padding: const EdgeInsets.fromLTRB(12.0, 12,12,0),
           child: Column(
             children: [
-              HeaderWidget(),
+              HeaderWidget(showBack: showBack),
               SizedBox(
                 height: 10,
               ),

@@ -4,7 +4,8 @@ import '../../../../../Core/Paths.dart';
 import '../../../../../DummyData.dart';
 
 class HeaderWidget extends StatelessWidget {
-  HeaderWidget({super.key});
+  bool showBack;
+  HeaderWidget({super.key, required this.showBack});
 
   int notificationCount = DummyData.notificationCount;
 
@@ -13,19 +14,18 @@ class HeaderWidget extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
+        if(showBack)
+          GestureDetector(
+          child: Icon(Icons.arrow_back, color: MyColors.white),
+          onTap: () {
+            Navigator.pop(context);
+          },
+        ),
         Image.asset(
-          MyPaths.logoMain,
+          MyPaths.logo,
           height: 50,
           fit: BoxFit.contain,
         ),
-        // Text(
-        //   "ISUPPLY",
-        //   style: TextStyle(
-        //     fontSize: 35,
-        //     fontWeight: FontWeight.w700,
-        //     color: MyColors.white,
-        //   ),
-        // ),
         Row(
           children: [
             Stack(
@@ -37,26 +37,26 @@ class HeaderWidget extends StatelessWidget {
                     right: 13,
                     top: -2,
                     child: Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 2),
-                      decoration: BoxDecoration(
-                        color: Colors.red,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      constraints: const BoxConstraints(
-                        minWidth: 18,
-                        minHeight: 18,
-                      ),
-                      child: Text(
-                        notificationCount > 99 ? '99+' : '$notificationCount',
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 10,
-                          fontWeight: FontWeight.bold,
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
-                  ),
+    padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 2),
+    decoration: BoxDecoration(
+    color: Colors.red,
+    borderRadius: BorderRadius.circular(10),
+    ),
+    constraints: const BoxConstraints(
+    minWidth: 18,
+    minHeight: 18,
+    ),
+    child: Text(
+    notificationCount > 99 ? '99+' : '$notificationCount',
+    style: const TextStyle(
+    color: Colors.white,
+    fontSize: 10,
+    fontWeight: FontWeight.bold,
+    ),
+    textAlign: TextAlign.center,
+    ),
+    ),
+    ),
               ],
             ),
             const SizedBox(width: 15),

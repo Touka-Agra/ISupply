@@ -5,6 +5,7 @@ class MyPaths{
   static String patternLight = "assets/Images/Brand/patternLight.png";
   static String patternWhite = "assets/Images/Brand/patternWhite.png";
 
+  static String logo = "assets/Images/Brand/Logo.png";
   static String logoMain = "assets/Images/Brand/logoMain.png";
   static String logoWhite = "assets/Images/Brand/logoWhite.png";
   static String logoLight = "";
@@ -20,4 +21,6 @@ class MyPaths{
   static String promotions = "assets/Images/Features/promotions.png";
 
 
+  static String beesline = "assets/Images/Products/beesline.jpg";
+  static String panadol="assets/Images/Products/panadol.jpg";
 }
