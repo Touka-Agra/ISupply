@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:isupply_hackathon_uiux/Core/Colors.dart';
+import 'package:isupply_hackathon_uiux/DummyData.dart';
 import '../Screens/HomeScreen/HomeScreen.dart';
 
 class BottomNavBar extends StatefulWidget {
@@ -11,7 +12,7 @@ class BottomNavBar extends StatefulWidget {
 
 class _BottomNavBarState extends State<BottomNavBar> {
   int _currentIndex = 0;
-  int cartItemCount = 3; // Example value
+  int cartItemCount = DummyData.cartCount;
 
   final List<Widget> _screens = [
     HomeScreen(),
@@ -24,6 +25,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
       backgroundColor: MyColors.white,
       body: _screens[_currentIndex],
       bottomNavigationBar: Container(
@@ -108,6 +110,14 @@ class _BottomNavBarState extends State<BottomNavBar> {
             ),
           ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          // Navigate to chat screen or open modal
+          print('Chatbox opened');
+        },
+        backgroundColor: MyColors.secondaryColor,
+        child: const Icon(Icons.chat_bubble_outline, color: Colors.white),
       ),
     );
   }

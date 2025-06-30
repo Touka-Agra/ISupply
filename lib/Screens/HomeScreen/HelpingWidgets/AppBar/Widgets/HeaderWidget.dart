@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../../../Core/Colors.dart';
+import '../../../../../Core/Paths.dart';
 import '../../../../../DummyData.dart';
 
 class HeaderWidget extends StatelessWidget {
@@ -12,14 +13,19 @@ class HeaderWidget extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(
-          "ISUPPLY",
-          style: TextStyle(
-            fontSize: 35,
-            fontWeight: FontWeight.w700,
-            color: MyColors.white,
-          ),
+        Image.asset(
+          MyPaths.logoMain,
+          height: 50,
+          fit: BoxFit.contain,
         ),
+        // Text(
+        //   "ISUPPLY",
+        //   style: TextStyle(
+        //     fontSize: 35,
+        //     fontWeight: FontWeight.w700,
+        //     color: MyColors.white,
+        //   ),
+        // ),
         Row(
           children: [
             Stack(
