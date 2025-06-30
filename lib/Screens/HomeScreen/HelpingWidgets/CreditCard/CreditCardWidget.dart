@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import '../../../../Classes/CreditStatus.dart';
 import '../../../../Classes/User.dart';
@@ -10,11 +12,7 @@ import 'Widgets/CreditTitle.dart';
 import 'Widgets/CreditToggle.dart';
 
 class CreditCardWidget extends StatefulWidget {
-  const CreditCardWidget({
-    super.key,
-    required this.h,
-    required this.user,
-  });
+  const CreditCardWidget({super.key, required this.h, required this.user});
 
   final double h;
   final User user;
@@ -47,10 +45,7 @@ class _CreditCardWidgetState extends State<CreditCardWidget> {
               child: PageView(
                 controller: _pageController,
                 onPageChanged: _onPageChanged,
-                children: [
-                  _buildCreditSection(),
-                  CashBody(),
-                ],
+                children: [_buildCreditSection(), CashBody()],
               ),
             ),
             CreditToggle(currentPage: _currentPage),
@@ -69,7 +64,7 @@ class _CreditCardWidgetState extends State<CreditCardWidget> {
             CreditTitle(
               user: widget.user,
               text:
-              "Credit Limit: ${widget.user.creditCard!.limit} | ${widget.user.creditCard!.days} days",
+                  "Credit Limit: ${widget.user.creditCard!.limit} | ${widget.user.creditCard!.days} days",
             ),
             CreditBody(user: widget.user),
           ],
@@ -86,9 +81,18 @@ class _CreditCardWidgetState extends State<CreditCardWidget> {
               CreditTitle(user: widget.user, text: "Apply for ISUPPLY Credit"),
               const SizedBox(height: 8),
               CreditRequestWidget(
-                onSubmitted: () {
+                onSubmitted: () async {
+                  // First update state synchronously
                   setState(() {
                     widget.user.creditStatus = CreditStatus.pending;
+                  });
+
+                  // Then perform async work
+                  await Future.delayed(Duration(seconds: 5));
+
+                  // Then update state again
+                  setState(() {
+                    widget.user.addCreditCard(limit: 20000, days: 30);
                   });
                 },
               ),

@@ -8,14 +8,14 @@ class DummyData {
     userName: "Takii",
     email: 'takii@gmail.com',
     password: '123456',
-    creditCard: CreditCard(limit: 100000, days: 14),
+    //creditCard: CreditCard(limit: 100000, days: 14),
   );
 
   static List<double> creditLimits = [5000, 10000, 15000, 20000];
   static List<int> planDurations = [14, 30];
 
   static int notificationCount = 100;
-  static int cartCount = 100;
+  static int cartCount = 3;
 
   static List<Product> products = [
     Product(
