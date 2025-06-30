@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-
 import '../../../../../Core/Colors.dart';
+import '../../../../../DummyData.dart';
 
 class HeaderWidget extends StatelessWidget {
-  const HeaderWidget({
-    super.key,
-  });
+  HeaderWidget({super.key});
+
+  int notificationCount = DummyData.notificationCount;
 
   @override
   Widget build(BuildContext context) {
@@ -22,15 +22,42 @@ class HeaderWidget extends StatelessWidget {
         ),
         Row(
           children: [
-            Icon(Icons.notifications, color: MyColors.white),
-            SizedBox(width: 15),
+            Stack(
+              clipBehavior: Clip.none,
+              children: [
+                Icon(Icons.notifications, color: MyColors.white),
+                if (notificationCount > 0)
+                  Positioned(
+                    right: 13,
+                    top: -2,
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 2),
+                      decoration: BoxDecoration(
+                        color: Colors.red,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      constraints: const BoxConstraints(
+                        minWidth: 18,
+                        minHeight: 18,
+                      ),
+                      child: Text(
+                        notificationCount > 99 ? '99+' : '$notificationCount',
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 10,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  ),
+              ],
+            ),
+            const SizedBox(width: 15),
             CircleAvatar(
               backgroundColor: MyColors.white,
               radius: 15,
-              child: Icon(
-                Icons.person,
-                color: MyColors.mainColor,
-              ),
+              child: Icon(Icons.person, color: MyColors.mainColor),
             ),
           ],
         ),

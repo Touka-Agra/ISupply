@@ -10,4 +10,8 @@ class DummyData{
 
   static List<double> creditLimits = [5000, 10000, 15000, 20000];
   static List<int> planDurations = [14, 30];
+
+  static int notificationCount = 100;
+  static int cartCount = 100;
+
 }

@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:dot_navigation_bar/dot_navigation_bar.dart';
 import 'package:isupply_hackathon_uiux/Core/Colors.dart';
-import 'package:isupply_hackathon_uiux/CustomWidgets/CustomContainer.dart';
-
 import '../Screens/HomeScreen/HomeScreen.dart';
 
 class BottomNavBar extends StatefulWidget {
@@ -14,13 +11,14 @@ class BottomNavBar extends StatefulWidget {
 
 class _BottomNavBarState extends State<BottomNavBar> {
   int _currentIndex = 0;
+  int cartItemCount = 3; // Example value
 
   final List<Widget> _screens = [
     HomeScreen(),
-    OrdersScreen(),
-    AttachmentScreen(),
-    CartScreen(),
-    MoreScreen(),
+    const OrdersScreen(),
+    const AttachmentScreen(),
+    const CartScreen(),
+    const MoreScreen(),
   ];
 
   @override
@@ -28,7 +26,16 @@ class _BottomNavBarState extends State<BottomNavBar> {
     return Scaffold(
       backgroundColor: MyColors.white,
       body: _screens[_currentIndex],
-      bottomNavigationBar: CustomContainer(
+      bottomNavigationBar: Container(
+        decoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black12,
+              blurRadius: 5,
+              offset: Offset(0, -1),
+            )
+          ],
+        ),
         child: BottomNavigationBar(
           backgroundColor: MyColors.white,
           type: BottomNavigationBarType.fixed,
@@ -45,37 +52,57 @@ class _BottomNavBarState extends State<BottomNavBar> {
           ),
           onTap: (index) => setState(() => _currentIndex = index),
           items: [
-            BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-            BottomNavigationBarItem(
+            const BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: 'Home',
+            ),
+            const BottomNavigationBarItem(
               icon: Icon(Icons.description_rounded),
               label: 'History',
             ),
             BottomNavigationBarItem(
               icon: Container(
-                padding: EdgeInsets.all(6),
+                padding: const EdgeInsets.all(6),
                 decoration: BoxDecoration(
                   color: MyColors.mainColor,
-                  shape: BoxShape.rectangle,
-                  borderRadius: BorderRadius.circular(5),
+                  borderRadius: BorderRadius.circular(6),
                 ),
-                child: Icon(Icons.upload_file, color: Colors.white),
+                child: const Icon(Icons.upload_file, color: Colors.white),
               ),
               label: 'Upload',
             ),
             BottomNavigationBarItem(
               icon: Stack(
+                clipBehavior: Clip.none,
                 children: [
-                  Icon(Icons.shopping_cart_rounded),
-                  Positioned(
-                    right: 0,
-                    top: 0,
-                    child: CircleAvatar(radius: 4, backgroundColor: Colors.red),
-                  ),
+                  const Icon(Icons.shopping_cart_rounded),
+                  if (cartItemCount > 0)
+                    Positioned(
+                      right: -8,
+                      top: -5,
+                      child: Container(
+                        padding: const EdgeInsets.all(2),
+                        decoration: BoxDecoration(
+                          color: Colors.red,
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        constraints: const BoxConstraints(minWidth: 16, minHeight: 16),
+                        child: Text(
+                          cartItemCount > 99 ? '99+' : '$cartItemCount',
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 10,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    ),
                 ],
               ),
               label: 'Cart',
             ),
-            BottomNavigationBarItem(
+            const BottomNavigationBarItem(
               icon: Icon(Icons.more_horiz_outlined),
               label: 'More',
             ),
