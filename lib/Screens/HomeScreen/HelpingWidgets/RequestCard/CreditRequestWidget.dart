@@ -18,11 +18,11 @@ class _CreditRequestWidgetState extends State<CreditRequestWidget> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+      padding: const EdgeInsets.symmetric(horizontal: 15),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const SizedBox(height: 10),
+          const SizedBox(height: 5),
 
           RequestLimit(),
           const SizedBox(height: 18),

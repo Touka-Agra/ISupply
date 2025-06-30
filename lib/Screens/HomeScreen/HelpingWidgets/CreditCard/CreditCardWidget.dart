@@ -41,10 +41,9 @@ class _CreditCardWidgetState extends State<CreditCardWidget> {
         padding: EdgeInsets.all(8),
         blurRadius: 5,
         child: Column(
-          mainAxisSize: MainAxisSize.min,
           children: [
             SizedBox(
-              height: widget.h * 0.28,
+              height: widget.h * 0.265,
               child: PageView(
                 controller: _pageController,
                 onPageChanged: _onPageChanged,
@@ -72,7 +71,6 @@ class _CreditCardWidgetState extends State<CreditCardWidget> {
               text:
               "Credit Limit: ${widget.user.creditCard!.limit} | ${widget.user.creditCard!.days} days",
             ),
-            const SizedBox(height: 8),
             CreditBody(user: widget.user),
           ],
         );

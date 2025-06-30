@@ -27,6 +27,7 @@ class CreditTitle extends StatelessWidget {
               backgroundColor: Colors.transparent,
             ),
           ),
+          SizedBox(width: 5,),
           CustomText(text: text, fontWeight: FontWeight.w600, fontSize: 14),
         ],
       ),

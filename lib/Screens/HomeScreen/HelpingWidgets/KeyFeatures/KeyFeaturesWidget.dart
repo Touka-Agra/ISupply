@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:isupply_hackathon_uiux/CustomWidgets/CustomContainer.dart';
 import '../../../../Classes/Feature.dart';
-import '../../../../Core/Colors.dart';
 import '../../../../Core/Paths.dart';
-import '../../../../CustomWidgets/CustomText.dart';
 import 'Widgets/FeatureBadge.dart';
 import 'Widgets/FeatureBody.dart';
 
@@ -23,7 +20,7 @@ class KeyFeaturesWidget extends StatelessWidget {
     ];
 
     return Padding(
-      padding: const EdgeInsets.only(left: 16,right: 12, top: 8, bottom: 8),
+      padding: const EdgeInsets.only(left: 16,right: 12, bottom: 8),
       child: GridView.builder(
         physics: const NeverScrollableScrollPhysics(),
         shrinkWrap: true,
@@ -32,8 +29,6 @@ class KeyFeaturesWidget extends StatelessWidget {
           crossAxisCount: 3,
           crossAxisSpacing: 15,
           mainAxisSpacing: 18,
-          childAspectRatio: 0.9,
-          //mainAxisExtent: null,
         ),
         itemBuilder: (context, index) {
           final feature = features[index];

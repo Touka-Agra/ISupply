@@ -15,7 +15,7 @@ class CreditBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 12),
+      padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 8),
       child: Column(
         children: [
           Column(
@@ -49,6 +49,8 @@ class CreditBody extends StatelessWidget {
               ),
             ],
           ),
+          SizedBox(height: 5,),
+
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -68,6 +70,7 @@ class CreditBody extends StatelessWidget {
                   Icon(
                     Icons.access_time_filled_rounded,
                     color: MyColors.mainColor,
+                    size: 15,
                   ),
                   SizedBox(width: 2),
                   CustomText(
@@ -79,7 +82,7 @@ class CreditBody extends StatelessWidget {
                 ],
               ),
               CustomContainer(
-                padding: EdgeInsets.all(2),
+                padding: EdgeInsets.all(3),
                 bgColor: MyColors.mainColor,
                 child: Padding(
                   padding: const EdgeInsets.all(5.0),

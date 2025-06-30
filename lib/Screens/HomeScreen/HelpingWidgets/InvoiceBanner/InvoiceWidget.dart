@@ -17,7 +17,7 @@ class InvoiceWidget extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(14),
           gradient: LinearGradient(
-            colors: [MyColors.lightColor, MyColors.mainColor],
+            colors: [MyColors.greenColor, MyColors.mainColor],
             begin: Alignment.centerLeft,
             end: Alignment.centerRight,
           ),

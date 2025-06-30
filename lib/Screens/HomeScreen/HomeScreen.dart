@@ -7,8 +7,8 @@ import 'HelpingWidgets/CreditCard/CreditCardWidget.dart';
 import 'HelpingWidgets/InvoiceBanner/InvoiceWidget.dart';
 import 'HelpingWidgets/KeyFeatures/KeyFeaturesWidget.dart';
 
-class Homescreen extends StatelessWidget {
-  Homescreen({super.key});
+class HomeScreen extends StatelessWidget {
+  HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
