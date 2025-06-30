@@ -16,14 +16,17 @@ class CreditTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomContainer(
       bgColor: MyColors.highlightColor,
+      height: 30,
       child: Row(
         children: [
-          CircleAvatar(
-            radius: 16,
-            backgroundImage: AssetImage(MyPaths.iPattern),
-            backgroundColor: Colors.transparent,
+          Padding(
+            padding: const EdgeInsets.all(3.0),
+            child: CircleAvatar(
+              radius: 12,
+              backgroundImage: AssetImage(MyPaths.patternWhite),
+              backgroundColor: Colors.transparent,
+            ),
           ),
-          SizedBox(width: 10),
           CustomText(text: text, fontWeight: FontWeight.w600, fontSize: 14),
         ],
       ),

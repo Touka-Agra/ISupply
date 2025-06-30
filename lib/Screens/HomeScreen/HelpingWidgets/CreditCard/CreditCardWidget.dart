@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../../Classes/CreditStatus.dart';
 import '../../../../Classes/User.dart';
-import '../../../../Core/Paths.dart';
 import '../../../../CustomWidgets/CustomContainer.dart';
 import '../RequestCard/CreditRequestWidget.dart';
 import '../ReviewingCard/ReciewingCardWidget.dart';
@@ -36,44 +35,29 @@ class _CreditCardWidgetState extends State<CreditCardWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Positioned.fill(
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(16),
-            child: Image.asset(
-              MyPaths.patternWhite,
-              fit: BoxFit.cover,
-              color: Colors.white.withOpacity(0.08),
-              colorBlendMode: BlendMode.srcOver,
+    return Padding(
+      padding: const EdgeInsets.all(5),
+      child: CustomContainer(
+        padding: EdgeInsets.all(8),
+        blurRadius: 5,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            SizedBox(
+              height: widget.h * 0.28,
+              child: PageView(
+                controller: _pageController,
+                onPageChanged: _onPageChanged,
+                children: [
+                  _buildCreditSection(),
+                  CashBody(),
+                ],
+              ),
             ),
-          ),
+            CreditToggle(currentPage: _currentPage),
+          ],
         ),
-
-        Padding(
-          padding: const EdgeInsets.all(5),
-          child: CustomContainer(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                SizedBox(
-                  height: widget.h * 0.28,
-                  child: PageView(
-                    controller: _pageController,
-                    onPageChanged: _onPageChanged,
-                    children: [
-                      _buildCreditSection(),
-                      CashBody(),
-                    ],
-                  ),
-                ),
-                const SizedBox(height: 8),
-                CreditToggle(currentPage: _currentPage),
-              ],
-            ),
-          ),
-        ),
-      ],
+      ),
     );
   }
 

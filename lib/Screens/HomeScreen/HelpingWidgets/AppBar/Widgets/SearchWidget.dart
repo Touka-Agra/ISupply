@@ -51,12 +51,12 @@ class SearchWidget extends StatelessWidget {
         Container(
           height: 48,
           decoration: BoxDecoration(
-            color: MyColors.highlightColor,
+            color: MyColors.white,
             borderRadius: BorderRadius.circular(15),
           ),
           child: Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Icon(Icons.qr_code_scanner, color: MyColors.white, size: 30),
+            child: Icon(Icons.qr_code_scanner, color: MyColors.mainColor, size: 30),
           ),
         ),
       ],

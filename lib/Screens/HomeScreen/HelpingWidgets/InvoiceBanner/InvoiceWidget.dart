@@ -30,7 +30,7 @@ class InvoiceWidget extends StatelessWidget {
           ],
         ),
         child: Padding(
-          padding: const EdgeInsets.all(5.0),
+          padding: const EdgeInsets.all(6.0),
           child: Container(
             padding: EdgeInsets.symmetric(horizontal: 8),
             decoration: BoxDecoration(

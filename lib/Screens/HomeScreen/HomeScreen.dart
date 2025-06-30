@@ -5,6 +5,7 @@ import '../../Core/Colors.dart';
 import 'HelpingWidgets/AppBar/AppBar.dart';
 import 'HelpingWidgets/CreditCard/CreditCardWidget.dart';
 import 'HelpingWidgets/InvoiceBanner/InvoiceWidget.dart';
+import 'HelpingWidgets/KeyFeatures/KeyFeaturesWidget.dart';
 
 class Homescreen extends StatelessWidget {
   Homescreen({super.key});
@@ -16,27 +17,30 @@ class Homescreen extends StatelessWidget {
     User user = DummyData.user;
     return Scaffold(
       backgroundColor: MyColors.white,
-      body: Stack(
-        children: [
-          Column(
-            children: [
-              MyAppBar(),
-              Column(
-                children: [
-                  Container(height:165,color: Colors.white),
-                  InvoiceWidget()
-                ],
-              ),
-
-            ],
-          ),
-          Positioned(
-            top: h * 0.215,
-            left: 16,
-            right: 16,
-            child: CreditCardWidget(h: h, user: user),
-          ),
-        ],
+      body: SingleChildScrollView(
+        child: Stack(
+          children: [
+            Column(
+              children: [
+                MyAppBar(),
+                Column(
+                  children: [
+                    Container(height:165,color: Colors.white),
+                    InvoiceWidget(),
+                    KeyFeaturesWidget()
+                  ],
+                ),
+        
+              ],
+            ),
+            Positioned(
+              top: h * 0.215,
+              left: 16,
+              right: 16,
+              child: CreditCardWidget(h: h, user: user),
+            ),
+          ],
+        ),
       ),
     );
   }

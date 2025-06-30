@@ -79,7 +79,7 @@ class CreditBody extends StatelessWidget {
                 ],
               ),
               CustomContainer(
-                padding: 2,
+                padding: EdgeInsets.all(2),
                 bgColor: MyColors.mainColor,
                 child: Padding(
                   padding: const EdgeInsets.all(5.0),
